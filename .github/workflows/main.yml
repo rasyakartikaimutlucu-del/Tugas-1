@@ -1,0 +1,24 @@
+
+name: Build Tugas 1 EXE
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Compile C++
+        run: g++ tugas_1.cpp -o tugas_1.exe
+
+      - name: Upload EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: tugas-1-exe
+          path: tugas_1.exe
